@@ -1,0 +1,21 @@
+{
+	"name": "ctlt-rss-block",
+	"version": "1.0.0",
+	"description": "Allow users to display external RSS feed on a page.",
+	"author": "Kelvin Xu",
+	"license": "GPL-2.0-or-later",
+	"homepage": "https://ctlt.ubc.ca/",
+	"main": "blocks/build/index.js",
+	"scripts": {
+		"start": "wp-scripts start --webpack-src-dir=blocks/src/ --output-path=blocks/build/ --experimental-modules",
+		"build": "wp-scripts build --webpack-src-dir=blocks/src/ --output-path=blocks/build/ --experimental-modules"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^27.6.0"
+	},
+	"dependencies": {
+		"@wordpress/icons": "^10.3.0",
+		"classnames": "^2.3.2",
+		"clsx": "^2.1.1"
+	}
+}

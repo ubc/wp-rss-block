@@ -1,0 +1,19 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+ .rss-url-control{
+    display: grid;
+    grid-template-columns: 1fr 30px;
+    align-items: end;
+    gap: 5px;
+
+    &__input {
+        margin-bottom: 0 !important;
+        * {
+            margin-bottom: 0 !important;
+        }
+    }
+ }

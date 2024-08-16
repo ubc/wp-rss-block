@@ -1,0 +1,39 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "ubc/ctlt-rss",
+	"version": "1.0.0",
+	"title": "WP RSS Block",
+	"category": "theme",
+	"icon": "calendar",
+	"description": "Allow users to display external RSS feed on a page.",
+	"supports": {
+		"align": [ "wide", "full" ],
+		"html": false,
+		"layout": true,
+		"interactivity": true
+	},
+	"attributes": {
+		"instanceId": {
+			"type": "number"
+		},
+		"source": {
+			"type": "string",
+			"default": "https://wordpress.org/news/feed/"
+		},
+		"postPerPage": {
+			"type": "integer",
+			"default": 10
+		},
+		"offset": {
+			"type": "integer",
+			"default": 0
+		}
+	},
+	"example": {},
+	"textdomain": "ctlt-rss",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php"
+}
