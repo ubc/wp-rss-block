@@ -69,6 +69,7 @@ function add_support_ubc_inner_blocks( $metadata ) {
 			'ubc/api-excerpt',
 			'ubc/api-content',
 			'ubc/api-datetime',
+			'ubc/api-image',
 		),
 		'ubc/ctlt-rss'
 	);
@@ -144,6 +145,7 @@ function fetch_rss( $source, $per_page, $current_page, $offset ) {
 
 	$rss_items = array_map(
 		function ( $rss_item ) {
+
 			return apply_filters(
 				'wpapi_filter_item_context',
 				array(
@@ -160,6 +162,12 @@ function fetch_rss( $source, $per_page, $current_page, $offset ) {
 							'value' => $rss_item->get_gmdate( 'Y-m-d H:i:s' ),
 						),
 					),
+					'images'      => $rss_item->get_enclosure() ? array(
+						array(
+							'label' => 'featured_image',
+							'src'   => $rss_item->get_enclosure()->get_link(),
+						),
+					) : array(),
 				),
 				'ubc/ctlt-rss',
 				$rss_item,
