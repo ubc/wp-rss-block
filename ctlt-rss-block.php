@@ -164,7 +164,7 @@ function fetch_rss( $source, $per_page, $current_page, $offset ) {
 					),
 					'images'      => $rss_item->get_enclosure() ? array(
 						array(
-							'label' => 'featured_image',
+							'label' => 'feed_item_image',
 							'src'   => $rss_item->get_enclosure()->get_link(),
 						),
 					) : array(),
