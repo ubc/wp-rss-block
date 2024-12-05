@@ -8,12 +8,13 @@ License:           GPL-2.0-or-later\
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html\
 
 ## Description
-The core RSS block allows users to display content from an external RSS feed with pre-defined template. The difference in this plugin is that it allows users to define the template themselvies by using the similiar technique as the Query Loop block where innerblocks can be added within the Resource Template block.
+The core RSS block enables users to display content from an external RSS feed using a pre-defined template. This RSS block plugin enhances functionality by allowing users to define their own templates, similar to the Query Loop block. Users can add inner blocks within the Resource Template block to customize the layout and style the elements without the use of custom CSS.
 
 ## How to use
 1. Install and activate the <a href="https://github.com/ubc/WP-API-Innerblocks" target="_blank">WP API Innerblocks</a> plugin.
 2. Install and activate the WP RSS Block plugin.
 3. With a post or page, add WP RSS Block.
+4. Enter RSS feed URL under settings and click update. By default, the feed results will be cached for 12 hours by WordPress, click the 'Reset Feed Cache' button to reset the cache and get the most recent content.
 
 
 ## Extensions
