@@ -22,5 +22,9 @@ The core RSS block enables users to display content from an external RSS feed us
 - <a href="https://github.com/ubc/wp-rss-block--additional-tags" target="_blank">Additional Extension</a> - This extension adds post feature image and custom fields to the RSS feed, and the content can be displayed using the RSS feed plugin with the same extension. For example, if you would like to display content(feature image, custom fields) from site B to site A. Make sure the WP RSS Block and the Additional extension are both installed and activated on both sites. Then use the WP RSS Block on site A to show feeds from site B.
 
 ## Changelog
+
+v2.0.0
+- Broken change introduced. It will only work with WP InnerBlocks plugin 2.x. Reworked the plugin so that instead of directly using the resources innerblocks from the InnerBlocks plugin. The RSS block can now create its own specific blocks based on existing resource innerblocks. 
+
 v1.0.1
 - Add support for Resource No Results block.
