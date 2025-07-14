@@ -16,6 +16,8 @@
 
 namespace UBC\CTLT\Block\RSS;
 
+define( 'CTLT_RSS_BLOCK_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+
 /**
  * Registers the block using the metadata loaded from the `block.json` file.
  * Behind the scenes, it registers also all assets so they can be enqueued
@@ -24,6 +26,8 @@ namespace UBC\CTLT\Block\RSS;
  * @see https://developer.wordpress.org/reference/functions/register_block_type/
  */
 function register_block() {
+	require_once CTLT_RSS_BLOCK_PLUGIN_DIR . 'includes/register-blocks.php';
+
 	/**
 	 * Register the blocks within the plugin based on the directory structure.
 	 * WordPress will search the blocks/build folder to locate the blocks.
@@ -57,29 +61,8 @@ function register_block() {
  */
 function add_support_ubc_inner_blocks( $metadata ) {
 
-	if ( 'ubc/api-pagination' === $metadata['name'] || 'ubc/api-template' === $metadata['name'] || 'ubc/api-no-results' === $metadata['name'] ) {
+	if ( 'ubc/api-pagination' === $metadata['name'] || 'ctlt/api-rss-template' === $metadata['name'] || 'ubc/api-no-results' === $metadata['name'] ) {
 		$metadata['parent'][] = 'ubc/ctlt-rss';
-	}
-
-	$supported_inner_blocks = apply_filters(
-		'wpapi_filter_supported_inner_blocks',
-		array(
-			'ubc/api-title',
-			'ubc/api-terms',
-			'ubc/api-excerpt',
-			'ubc/api-content',
-			'ubc/api-datetime',
-			'ubc/api-image',
-		),
-		'ubc/ctlt-rss'
-	);
-
-	if ( in_array( $metadata['name'], $supported_inner_blocks ) ) {
-		if ( ! array_key_exists( 'ancestor', $metadata ) ) {
-			$metadata['ancestor'] = array();
-		}
-
-		$metadata['ancestor'][] = 'ubc/api-template';
 	}
 
 	return $metadata;
@@ -145,29 +128,39 @@ function fetch_rss( $source, $per_page, $current_page, $offset ) {
 
 	$rss_items = array_map(
 		function ( $rss_item ) {
-
 			return apply_filters(
 				'wpapi_filter_item_context',
 				array(
-					'id'          => $rss_item->get_id(),
-					'name'        => $rss_item->get_title(),
-					'author'      => $rss_item->get_author(),
-					'link'        => $rss_item->get_permalink(),
-					'excerpt'     => $rss_item->get_description(),
-					'description' => $rss_item->get_content(),
-					'terms'       => format_terms( $rss_item->get_categories(), 'type' ),
-					'datetimes'   => array(
-						array(
-							'label' => 'published_date',
-							'value' => $rss_item->get_gmdate( 'Y-m-d H:i:s' ),
+					'ctlt/api-rss-title'       => array(
+						'title' => $rss_item->get_title(),
+						'link'  => $rss_item->get_permalink(),
+					),
+					'ctlt/api-rss-excerpt'     => array(
+						'excerpt' => $rss_item->get_description(),
+						'link'    => $rss_item->get_permalink(),
+					),
+					'ctlt/api-rss-description' => array(
+						'description' => $rss_item->get_content(),
+					),
+					'ctlt/api-rss-dates'       => array(
+						'datetimes' => array(
+							array(
+								'label' => 'published_date',
+								'value' => $rss_item->get_gmdate( 'Y-m-d H:i:s' ),
+							),
 						),
 					),
-					'images'      => $rss_item->get_enclosure() ? array(
-						array(
-							'label' => 'feed_item_image',
-							'src'   => $rss_item->get_enclosure()->get_link(),
-						),
-					) : array(),
+					'ctlt/api-rss-categories'  => array(
+						'terms' => format_terms( $rss_item->get_categories(), 'type' ),
+					),
+					'ctlt/api-rss-image'       => array(
+						'images' => $rss_item->get_enclosure() ? array(
+							array(
+								'label' => 'feed_item_image',
+								'src'   => $rss_item->get_enclosure()->get_link(),
+							),
+						) : array(),
+					),
 				),
 				'ubc/ctlt-rss',
 				$rss_item,

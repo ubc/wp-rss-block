@@ -49,7 +49,7 @@ $block_instance = $block->parsed_block;
 $filter_block_context = static function ( $context, $parsed_block ) use ( $items, $instance_id, $total_pages ) {
 
 	// The contexts are only passed to Template block and all the innerblocks within Template block.
-	if ( 'ubc/api-template' === $parsed_block['blockName'] || 'ubc/api-no-results' === $parsed_block['blockName'] ) {
+	if ( 'ctlt/api-rss-template' === $parsed_block['blockName'] || 'ubc/api-no-results' === $parsed_block['blockName'] ) {
 		$context['resources'] = $items;
 	}
 

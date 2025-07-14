@@ -19,7 +19,12 @@ import UrlControl from './url-control';
 import './editor.scss';
 
 const DEFAULT_TEMPLATE = [
-    [ 'ubc/api-template', {} ],
+    [ 'ctlt/api-rss-template', {}, [
+		[ 'ctlt/api-rss-image', {} ],
+		[ 'ctlt/api-rss-title', {} ],
+		[ 'ctlt/api-rss-dates', {} ],
+		[ 'ctlt/api-rss-excerpt', { moreText: 'READ MORE' } ],
+	] ],
 	[ 'ubc/api-pagination', {} ],
 	[ 'ubc/api-no-results', {} ],
 ];
