@@ -4,7 +4,7 @@
  * Description:       Allow users to display external RSS feed on a page.
  * Requires at least: 6.5
  * Requires PHP:      8.2
- * Version:           1.0.2
+ * Version:           2.0.0
  * Author:            Kelvin Xu
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
