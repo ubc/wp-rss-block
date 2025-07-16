@@ -161,6 +161,9 @@ function fetch_rss( $source, $per_page, $current_page, $offset ) {
 							),
 						) : array(),
 					),
+					'ctlt/api-rss-custom-field' => array(
+						'custom_fields' => array(),
+					),
 				),
 				'ubc/ctlt-rss',
 				$rss_item,

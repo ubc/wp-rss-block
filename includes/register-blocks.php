@@ -90,3 +90,14 @@ APIInnerBlocks::register_block(
 		'ancestor'     => array( 'ctlt/api-rss-template' ),
 	)
 );
+
+APIInnerBlocks::register_block(
+	'resource-custom-field',
+	'ctlt/api-rss-custom-field',
+	array(
+		'title'        => 'RSS Custom Field',
+		'description'  => 'Display a custom field of the RSS feed',
+		'uses_context' => array( 'ctlt/api-rss-custom-field' ),
+		'ancestor'     => array( 'ctlt/api-rss-template' ),
+	)
+);
